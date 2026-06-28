@@ -10,6 +10,14 @@ public class MeuPlugin extends JavaPlugin {
         // Esse método roda automaticamente quando o servidor liga o plugin
         getLogger().info("Plugin ligado!");
 
+        getServer().getPluginManager().registerEvents(new MeuListener(), this);
+
+        //Registra o novo listener da espada
+        getServer().getPluginManager().registerEvents(new EspadaListener(this), this);
+
+        //Registra o comando - o nome "darespada" precisa bater com o que vamos colocar no plugin.yml
+        getCommand("darespada").setExecutor(new DarEspadaCommand(this));
+
         // Aqui é o passo MAIS IMPORTANTE: registrar o listener.
         // Sem essa linha, o @EventHandler no MeuListener nunca seria chamado,
         // mesmo a classe existindo - o Bukkit não saberia que ela existe.
