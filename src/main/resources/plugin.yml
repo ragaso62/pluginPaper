@@ -4,5 +4,5 @@ main: com.lucas.MeuPlugin
 api-version: '1.21'
 
 commands:
-darespada:
-  description: Dá a espada especial com efeito de lentidão
+  darespada:
+    description: Dá a espada especial com efeito de lentidão

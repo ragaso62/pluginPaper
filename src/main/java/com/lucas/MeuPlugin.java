@@ -10,8 +10,6 @@ public class MeuPlugin extends JavaPlugin {
         // Esse método roda automaticamente quando o servidor liga o plugin
         getLogger().info("Plugin ligado!");
 
-        getServer().getPluginManager().registerEvents(new MeuListener(), this);
-
         //Registra o novo listener da espada
         getServer().getPluginManager().registerEvents(new EspadaListener(this), this);
 
