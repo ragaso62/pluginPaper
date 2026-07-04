@@ -30,6 +30,8 @@ public class EspadaListener implements Listener {
         // Só nos interessa quando quem bateu é um jogador
         ItemStack item = player.getInventory().getItemInMainHand();
 
+        if (item == null || item.getItemMeta() == null) return; //não tem item na mão, ignora
+
         // Verifica se o item tem nossa "etiqueta" gravada nele
         boolean ehEspadaEspecial = item.getItemMeta().getPersistentDataContainer()
                 .has(chave, PersistentDataType.BOOLEAN);
