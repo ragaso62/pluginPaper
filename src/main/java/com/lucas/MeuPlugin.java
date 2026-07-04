@@ -19,6 +19,9 @@ public class MeuPlugin extends JavaPlugin {
 
         //Registra o comando - o nome "darespada" precisa bater com o que vamos colocar no plugin.yml
         getCommand("darespada").setExecutor(new DarEspadaCommand(this));
+        getCommand("darpeitoral").setExecutor(new DarPeitoralCommand(this));
+
+        getServer().getPluginManager().registerEvents(new Beserker(itemKeys), this);
 
         // Aqui é o passo MAIS IMPORTANTE: registrar o listener.
         // Sem essa linha, o @EventHandler no MeuListener nunca seria chamado,
