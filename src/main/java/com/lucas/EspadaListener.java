@@ -1,6 +1,5 @@
 package com.lucas;
 
-import org.bukkit.NamespacedKey;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,10 +13,10 @@ import org.bukkit.potion.PotionEffectType;
 public class EspadaListener implements Listener {
     // NamespacedKey é como uma "etiqueta única" pra marcar o item.
     // Precisa do nome do plugin (passado no construtor) pra evitar conflito com outros plugins.
-    private final NamespacedKey chave;
-    
-    public EspadaListener(MeuPlugin plugin) {
-        this.chave = new NamespacedKey(plugin, "espada_especial");
+    private final ItemKeys Keys;
+
+    public EspadaListener(ItemKeys Keys) {
+        this.Keys = Keys;
     }
 
     // Esse evento dispara toda vez que uma entidade (jogador, mob, etc) bate em outra
@@ -34,7 +33,7 @@ public class EspadaListener implements Listener {
 
         // Verifica se o item tem nossa "etiqueta" gravada nele
         boolean ehEspadaEspecial = item.getItemMeta().getPersistentDataContainer()
-                .has(chave, PersistentDataType.BOOLEAN);
+                .has(Keys.espadaEspecial, PersistentDataType.BOOLEAN);
 
         if (!ehEspadaEspecial) return; //não é a espada especial, iginora
 

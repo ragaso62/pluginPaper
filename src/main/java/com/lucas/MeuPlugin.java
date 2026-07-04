@@ -5,13 +5,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 // JavaPlugin é a classe base que todo plugin Paper/Bukkit precisa estender
 public class MeuPlugin extends JavaPlugin {
 
+    private ItemKeys itemKeys;
+
     @Override
     public void onEnable() {
+        itemKeys = new ItemKeys(this);
+
         // Esse método roda automaticamente quando o servidor liga o plugin
         getLogger().info("Plugin ligado!");
 
         //Registra o novo listener da espada
-        getServer().getPluginManager().registerEvents(new EspadaListener(this), this);
+        getServer().getPluginManager().registerEvents(new EspadaListener(itemKeys), this);
 
         //Registra o comando - o nome "darespada" precisa bater com o que vamos colocar no plugin.yml
         getCommand("darespada").setExecutor(new DarEspadaCommand(this));
@@ -22,10 +26,15 @@ public class MeuPlugin extends JavaPlugin {
         // "this" é o próprio plugin (precisa informar pra qual plugin esse listener pertence)
         getServer().getPluginManager().registerEvents(new MeuListener(), this);
     }
+    public ItemKeys getItemKeys() {
+        return itemKeys;
+    }
 
     @Override
     public void onDisable() {
         // Esse método roda automaticamente quando o servidor desliga ou recarrega o plugin
         getLogger().info("Plugin desligado!");
     }
+    
+
 }
