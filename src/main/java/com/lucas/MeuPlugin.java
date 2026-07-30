@@ -22,6 +22,7 @@ public class MeuPlugin extends JavaPlugin {
         getCommand("darpeitoral").setExecutor(new DarPeitoralCommand(this));
 
         getServer().getPluginManager().registerEvents(new Beserker(itemKeys), this);
+        getServer().getPluginManager().registerEvents(new fortuneBlock(itemKeys), this);
 
         // Aqui é o passo MAIS IMPORTANTE: registrar o listener.
         // Sem essa linha, o @EventHandler no MeuListener nunca seria chamado,
